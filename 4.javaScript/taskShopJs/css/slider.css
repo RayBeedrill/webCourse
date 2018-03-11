@@ -1,0 +1,77 @@
+
+
+.slide{
+    position: absolute;
+    top: 0;
+    width: inherit;
+    height: inherit;
+    float: left;
+    transition: all 0.5s;
+}
+
+.slide img{
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    width: 300px;
+}
+
+.GeeksSlider
+{
+    position: relative;
+}
+
+.geek-preview{
+    text-align: center;
+    margin-top: 25px;
+}
+
+.geek-preview .previewImg{
+    margin: 0 5px;
+}
+.left-arrow:hover,
+.right-arrow:hover,
+.geek-preview .previewImg:hover{
+    cursor: pointer;
+}
+
+.right-arrow,
+.left-arrow{
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    z-index: 500;
+    margin-top: -25px;
+    display: none;
+}
+
+.GeeksSlider:hover .left-arrow,
+.GeeksSlider:hover .right-arrow{
+    display: block;
+}
+
+.left-arrow{
+    left:0;
+}
+
+.right-arrow
+{
+    right:0;
+}
+.right-arrow img,
+.left-arrow img
+{
+    width: 100%;
+}
+.previewImg
+{
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.previewImg:hover,
+.previewImg.active{
+    opacity: 0.5;
+}

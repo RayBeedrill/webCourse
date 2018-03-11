@@ -1,0 +1,11 @@
+.teams{
+    margin:25px 0; 
+}
+.team-name{
+    display: inline;
+    margin-right: 10px;
+}
+.one-team{
+display:inline-block;
+margin-right:20px;
+}

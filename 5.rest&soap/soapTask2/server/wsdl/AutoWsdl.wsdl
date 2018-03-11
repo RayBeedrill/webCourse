@@ -1,0 +1,177 @@
+<?xml version ='1.0' encoding ='UTF-8' ?> 
+<!--<definitions name='AutoWsdl' 
+    targetNamespace='http://soaptask2.loc/server/' 
+    xmlns:tns='http://soaptask2.loc/server/' 
+ xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+ xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+ xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+ xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+ xmlns='http://schemas.xmlsoap.org/wsdl/'
+ > -->
+ <definitions name='AutoWsdl' 
+    targetNamespace='http://192.168.0.15/~user4/SOAP/task2/server/' 
+    xmlns:tns='http://192.168.0.15/~user4/SOAP/task2/server/' 
+ xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+ xmlns:xsd='http://www.w3.org/2001/XMLSchema' 
+ xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/' 
+ xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' 
+ xmlns='http://schemas.xmlsoap.org/wsdl/'
+ > 
+
+<message name='getCarListRequest'> 
+    <!--<part name='Request' type='xsd:void'/> --> 
+</message> 
+<message name='getCarListResponse'> 
+ <part name='Result' type='xsd:string'/> 
+</message>
+
+<message name='getCarInfoRequest'> 
+  <part name='id' type='xsd:int'/>
+</message> 
+<message name='getCarInfoResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message>
+
+<message name='getCarBySettingsRequest'> 
+  <part name='arr' type='xsd:string'/>
+</message> 
+<message name='getCarBySettingsResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
+
+<message name='getAllPaymentMethodsRequest'> 
+    <!--<part name='Request' type='xsd:void'/> --> 
+</message> 
+<message name='getAllPaymentMethodsResponse'> 
+ <part name='Result' type='xsd:string'/> 
+</message>
+
+<message name='getAllFiltersRequest'> 
+    <!--<part name='Request' type='xsd:void'/> --> 
+</message> 
+<message name='getAllFiltersResponse'> 
+ <part name='Result' type='xsd:string'/> 
+</message>
+
+<message name='buyCarRequest'> 
+  <part name='arr' type='xsd:string'/>
+</message> 
+<message name='buyCarResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message>
+
+<portType name='AutoWsdlPortType'> 
+ <operation name='getCarList'> 
+  <input message='tns:getCarListRequest'/> 
+  <output message='tns:getCarListResponse'/> 
+ </operation> 
+
+ <operation name='getCarInfo'> 
+  <input message='tns:getCarInfoRequest'/> 
+  <output message='tns:getCarInfoResponse'/> 
+ </operation> 
+
+ <operation name='getCarBySettings'> 
+  <input message='tns:getCarBySettingsRequest'/> 
+  <output message='tns:getCarBySettingsResponse'/> 
+ </operation> 
+
+ <operation name='getAllPaymentMethods'> 
+  <input message='tns:getAllPaymentMethodsRequest'/> 
+  <output message='tns:getAllPaymentMethodsResponse'/> 
+ </operation>
+
+ <operation name='getAllFilters'> 
+  <input message='tns:getAllFiltersRequest'/> 
+  <output message='tns:getAllFiltersResponse'/> 
+ </operation>
+
+ <operation name='buyCar'> 
+  <input message='tns:buyCarRequest'/> 
+  <output message='tns:buyCarResponse'/> 
+ </operation> 
+</portType> 
+
+<binding name='AutoWsdlBinding' type='tns:AutoWsdlPortType'> 
+ <soap:binding style='rpc' 
+  transport='http://schemas.xmlsoap.org/soap/http'/> 
+ <operation name='getCarList'> 
+  <soap:operation soapAction='urn:xmethods-delayed-quotes#getCarList'/> 
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation>
+
+ <operation name='getCarInfo'> 
+  <soap:operation soapAction='urn:xmethods-delayed-quotes#getCarInfo'/> 
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation> 
+
+ <operation name='getCarBySettings'> 
+  <soap:operation soapAction='urn:xmethods-delayed-quotes#getCarBySettings'/> 
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation>
+
+ <operation name='getAllPaymentMethods'> 
+  <soap:operation soapAction='urn:xmethods-delayed-quotes#getAllPaymentMethods'/> 
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation>
+
+ <operation name='getAllFilters'> 
+  <soap:operation soapAction='urn:xmethods-delayed-quotes#getAllFilters'/> 
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation> 
+
+ <operation name='buyCar'> 
+  <soap:operation soapAction='urn:xmethods-delayed-quotes#buyCar'/> 
+  <input> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </input> 
+  <output> 
+   <soap:body use='encoded' namespace='urn:xmethods-delayed-quotes' 
+    encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+  </output> 
+ </operation> 
+</binding> 
+
+<service name='AutoWsdlService'> 
+ <port name='AutoWsdlPort' binding='AutoWsdlBinding'> 
+    <soap:address location='http://192.168.0.15/~user4/SOAP/task2/server/index.php'/>
+    <!--    <soap:address location='http://soaptask2.loc/server/index.php'/> -->
+ </port> 
+</service> 
+</definitions>

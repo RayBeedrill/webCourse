@@ -1,0 +1,27 @@
+1) get all cars (id mark, model)
+
+SELECT cars.id_car as id, brands.name as brand, cars.model FROM cars LEFT JOIN brands ON cars.id_brand = brands.id_brand;
+
+2) get car info (id)
+
+ SELECT cars.id_car as id, cars.model , brands.name as brand, colors.name as color, years.year, engines.capacity, cars.max_speed, cars.price FROM cars  LEFT JOIN brands ON brands.id_brand = cars.id_brand LEFT JOIN colors ON colors.id_color = cars.id_color LEFT JOIN years ON years.id_year = cars.id_year LEFT JOIN engines ON engines.id_engine = cars.id_engine WHERE cars.id_car = id;
+ 
+ 3) get car info  by settings (settings)
+
+ SELECT cars.id_car as id, cars.model , brands.name as brand, colors.name as color, years.year, engines.capacity, cars.max_speed, cars.price FROM cars  LEFT JOIN brands ON brands.id_brand = cars.id_brand LEFT JOIN colors ON colors.id_color = cars.id_color LEFT JOIN years ON years.id_year = cars.id_year LEFT JOIN engines ON engines.id_engine = cars.id_engine WHERE years.year = 2008 AND colors.name = 'grey' AND ...;
+ 
+ 4) get all years ()
+ 
+ SELECT id_year as id, year from years;
+
+ 5) get all colors()
+ SELECT id_color as id, name from colors;
+
+ 6) get all engines()
+ SELECT id_engine as id, capacity from engines;
+ 
+ 7) get all payment methods()
+SELECT id_method as id, name as method from payment_method;
+
+... brands, models, 
+ 

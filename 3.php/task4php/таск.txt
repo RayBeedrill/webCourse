@@ -1,0 +1,3 @@
+создать приложение( классы ) которые работат с MySQL и Postgresql
+и могут выполнять SELECT, INSERT, UPDATE, DELETE
+

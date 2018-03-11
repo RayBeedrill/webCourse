@@ -1,0 +1,172 @@
+https://habrahabr.ru/post/46374/
+
+https://thumbnail.ws/documentation.html
+
+Доброго дня.
+
+Теория:: SOAP
+http://www.phpclub.ru/detail/article/soap
+http://ru.wikipedia.org/wiki/SOAP
+http://www.w3.org/TR/soap/
+http://www.w3.org/2002/07/soap-translation/russian/part0.html
+http://habrahabr.ru/blogs/php/38370/
+https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%B1-%D1%81%D0%BB%D1%83%D0%B6%D0%B1%D0%B0 
+
+
+Практика::
+Построить SOAP клиент для 2х любых soap сервисов из интернета.
+(сервисы по желанию. одно у словие - 1 из сервисов должен принимать аргументы).
+Реализовать каждый из 2х клиентов надо 2мя способами: cURL и SOAP extension PHP.
+Итого 4. + Минимальный интерфейс.
+
+
+SOAP Client task:
+
+You can use one of the next URLs:
+
+1. Country code and curency (Get Currency, Curreny code)
+http://www.webservicex.net/WS/WSDetails.aspx?WSID=17&CATID=7
+
+2. Computer Unit Convertor
+Convert bytes, kilobytes, megabytes, gigabytes, and More...
+Speed Unit Convertor
+centimetres/second, meters/second, kilometres/hour, feet/second,
+feet/minute, miles/hour, knots, mach, More...
+http://www.webservicex.net/WS/WSDetails.aspx?WSID=24&CATID=13
+
+3. GeoIPService
+GeoIPService enables you to easily look up countries by IP address / Context
+http://www.webservicex.net/WS/WSDetails.aspx?CATID=12&WSID=64
+
+4. WHOIS
+Get domain name registration record by Host Name / Domain Name (WhoIS)
+
+5. Length/Distance Unit Convertor
+Millimetres, Centimetres, Inches, Feet, Yards, Meters, Kilometres,
+Miles, Mils, Rods, Fathoms, Nautical Miles, More...
+Weight Unit Convertor
+Kilograms, Ounces, Pounds, Troy Pounds, Stones, Tons, More...
+http://www.webservicex.net/WS/CATs.aspx?CATID=13&DESC=Value%20Manipulation%20/%20Unit%20Convertor 
+
+6. Global Weather.
+Current weather and weather conditions for major cities around the world
+http://www.webservicex.net/WS/WSDetails.aspx?WSID=56&CATID=12
+US Address verification
+Verify US Address
+http://www.webservicex.net/WS/WSDetails.aspx?WSID=77&CATID=7
+
+
+
+Web Services:
+
+http://mikhailstadnik.com/practical-web-services
+http://php.su/articles/?cat=pear&page=004
+
+WSDLs:
+
+http://footballpool.dataaccess.eu/data/info.wso?WSDL
+http://www.actionscript.org/forums/showthread.php3?t=70742
+
+
+
+Доброго дня!
+
+Задание:
+
+1. Необходимо реализовать простой SOAP сервер "Автомагазин"
+    а) сервис должен иметь wsdl, описывающий следующие функции: 
+    получить список автомобилей (возвращает только ID, марку и модель), 
+    получить детальную информацию по ID (возвращает комплекс type из имени модели, год выпуска, объём двигателя, цвет, макс скорость, цена),
+    поиск по параметрам (в качестве параметров используется тот же комплекс type что и в предыдущем запросе. Поле «год выпуска» - обязательно), 
+    функция выполнения предварительного заказа автомобиля (ID авто, имя, фамилия покупателя, способ оплаты. Способ оплаты enumeration из "кредитная карта", "наличные")
+    
+    б) Сервис должен контролировать любые ошибки в полученном запросе и адекватно на них реагировать (возвращать определенную ошибку). 
+    Проверка должна быть на тип данных, соответствие требованиям wsdl.
+    
+    в) Необходимая информация должна находиться в базе данных.
+2. Реализовать простой интерфейс + SOAP клиент для работы с сервисом.
+
+Вспомогательное программное обеспечение:
+On-Line редактор: 
+http://marin.jb.free.fr/wsdl/index.php
+
+Visual XML редактор:
+https://www.liquid-technologies.com/ (есть на рутрэкере)
+
+Плагин для Гугл Хрома - краткий анализ wsdl ссылки:
+https://chrome.google.com/webstore/detail/wizdler/oebpmncolmhiapingjaagmapififiakb
+
+Программа для работы и теста вашего SOAP сервера и WSDL :
+http://www.soapui.org/
+http://sourceforge.net/projects/soapui/files/soapui/4.0.1/soapUI-x32-4_0_1.exe/download
+
+
+Доброго дня!
+
+Теория ::
+
+http://www.xfront.com/REST-Web-Services.html
+http://quandyfactory.com/blog/65/designing_a_restful_web_application
+
+По кодам состояния и методам обработки запросов HTTP:
+http://vds-admin.ru/http/kody-sostoyaniya-http-otveta-veb-servera-metody-http
+
+
+На стороне клиента:
+RewriteEngine On
+RewriteBase /api/
+RewriteRule (.*) http://serverIp/~userN/REST/Server/api/$1 [P]
+
+
+На стороне REST сервера:
+RewriteEngine On
+RewriteBase /~userN/REST/Server/api/shop/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.php
+
+
+
+list($s, $a, $d, $db, $table, $path) = explode('/', $url, 6);
+
+
+# use setMethod to map to a specific function
+# GET /api/db/web/applist/test.com = getApplist(test.com)
+switch($this->method)
+{
+    case 'GET':
+        $this->setMethod('get'.ucfirst($table), explode('/', $path));
+        break;
+    case 'DELETE':
+        $this->setMethod('delete'.ucfirst($table), explode('/', $path));
+        break;
+    case 'POST':
+        $this->setMethod('post'.ucfirst($table), explode('/', $path));
+        break;
+    case 'PUT':
+        $this->setMethod('put'.ucfirst($table), explode('/', $path));
+        break;
+    default:
+        return false;
+}
+
+
+
+function setMethod($method, $param=false)
+{
+    if ( method_exists($this, $method) )
+    {
+        call_user_func(......);
+    }
+}
+
+
+
+
+Задание::
+
+Реализовать тоже самое что и в SOAP server, только на REST технологии:
+отдельно на Html/Js/jQuery/Vue/Ajax/AngularJS - контрольная панель и
+отдельно REST API.
++ регистрация и логин, просмотр покупок
++ невозможность купить и просмотреть покупки без логина

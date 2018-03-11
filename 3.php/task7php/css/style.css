@@ -1,0 +1,13 @@
+.title h2,
+.errors{
+text-align:center;
+}
+
+.cf-class{
+margin-top:25px;
+}
+
+.errors strong{
+width:250px;
+display: inline-block;
+}

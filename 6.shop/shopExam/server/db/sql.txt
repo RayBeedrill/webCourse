@@ -1,0 +1,297 @@
+добавить автора
+insert into authors (name) VALUES ('author4');
+// add on frontbooks
+добавить скидку 
+insert into discount (amount) VALUES ('30');
+
+добавить жанр
+insert into genres (name) VALUES ('genre1');
+
+добавить роль
+insert into roles (name) VALUES ('admin');
+
+обновить автора
+UPDATE authors
+SET name = 'someName'
+WHERE id_author='1';
+
+// add on front books
+обновить скидку
+UPDATE discount
+SET amount = '50'
+WHERE id_discount='1';
+
+обновить жанр
+UPDATE genres
+SET name = 'someGenre'
+WHERE id_genre='1';
+
+Удалить автора
+DELETE FROM authors
+WHERE id_author='1';
+
+DELETE FROM booksAuthor
+WHERE id_author='1';
+
+Удалить скидку
+DELETE FROM discount
+WHERE id_discount='1';
+
+Удалить жанр
+DELETE FROM genres
+WHERE id_genre='1';
+
+DELETE FROM booksGenre
+WHERE id_genre='1';
+
+добавить книгу
+insert into books (title, price, shortDesc, description, id_discount)  VALUES ('titleTest', '300', 'short desc', 'desc', '1');
+insert into booksAuthor (id_book,id_author) VALUES (1,1); 
+insert into booksGenre (id_book,id_genre) VALUES (1,1); 
+
+обновить книгу
+UPDATE books
+SET title = 'sometitle'
+WHERE id_book='1';
+
+UPDATE books
+SET price = '500'
+WHERE id_book='1';
+
+UPDATE books
+SET shortDesc = 'updatedShortDesc'
+WHERE id_book='1';
+
+UPDATE books
+SET description = 'updatedDesc'
+WHERE id_book='1';
+
+UPDATE books
+SET id_discount = '1'
+WHERE id_book='1';
+
+UPDATE booksAuthor
+SET id_author = '1'
+WHERE id_book='1';
+
+UPDATE booksGenre
+SET id_genre = '1'
+WHERE id_book='1';
+
+удалить книгу
+DELETE FROM books
+WHERE id_book='1';
+
+DELETE FROM booksAuthor
+WHERE id_book='1';
+
+DELETE FROM booksGenre
+WHERE id_book='1';
+
+
+получить все книги
+select 
+books.id_book,
+GROUP_CONCAT(DISTINCT authors.name ORDER BY authors.name ASC SEPARATOR ', ') as authors,
+books.title, 
+GROUP_CONCAT(DISTINCT genres.name ORDER BY genres.name ASC SEPARATOR ', ') as genres,
+books.shortDesc, 
+books.description,
+books.price, 
+discount.amount 
+FROM books 
+LEFT JOIN booksAuthor ON books.id_book=booksAuthor.id_book  
+LEFT JOIN booksGenre ON books.id_book=booksGenre.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author 
+LEFT JOIN genres ON genres.id_genre=booksGenre.id_genre 
+LEFT JOIN discount ON books.id_discount=discount.id_discount
+GROUP BY books.id_book;
+
+
+получить книгу по id 
+select 
+books.id_book,
+GROUP_CONCAT(DISTINCT authors.name ORDER BY authors.name ASC SEPARATOR ', ') as authors,
+books.title, 
+GROUP_CONCAT(DISTINCT genres.name ORDER BY genres.name ASC SEPARATOR ', ') as genres,
+books.shortDesc, 
+books.description,
+books.price, 
+discount.amount 
+FROM books 
+LEFT JOIN booksAuthor ON books.id_book=booksAuthor.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author 
+LEFT JOIN booksGenre ON books.id_book=booksGenre.id_book  
+LEFT JOIN genres ON genres.id_genre=booksGenre.id_genre 
+LEFT JOIN discount ON books.id_discount=discount.id_discount WHERE books.id_book = 1;
+
+получить книги по авторам
+select 
+books.id_book,
+authors.name as authors,
+books.title, 
+GROUP_CONCAT(DISTINCT genres.name ORDER BY genres.name ASC SEPARATOR ', ') as genres,
+books.shortDesc, 
+books.description,
+books.price, 
+discount.amount 
+FROM books 
+LEFT JOIN booksAuthor ON books.id_book=booksAuthor.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author 
+LEFT JOIN booksGenre ON books.id_book=booksGenre.id_book  
+LEFT JOIN genres ON genres.id_genre=booksGenre.id_genre 
+LEFT JOIN discount ON books.id_discount=discount.id_discount
+WHERE authors.name='author1'
+GROUP BY id_book;
+
+получить книги по жанрам
+select 
+books.id_book,
+authors.name as authors,
+books.title, 
+GROUP_CONCAT(DISTINCT genres.name ORDER BY genres.name ASC SEPARATOR ', ') as genres,
+books.shortDesc, 
+books.description,
+books.price, 
+discount.amount 
+FROM books 
+LEFT JOIN booksAuthor ON books.id_book=booksAuthor.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author 
+LEFT JOIN booksGenre ON books.id_book=booksGenre.id_book  
+LEFT JOIN genres ON genres.id_genre=booksGenre.id_genre 
+LEFT JOIN discount ON books.id_discount=discount.id_discount
+WHERE genres.name='genre2'
+GROUP BY id_book;
+
+регистрация
+
+INSERT INTO users(id_role,login,password, status) VALUES ('2','login','pass', '1')
+INSERT INTO customers(id_user, name,secondName,phone,email,id_discount) VALUES ('2','name','secname','380939','email@asda','1')
+
+редактирование юзера из админки 1 = активный 0 некативный
+
+UPDATE users SET status="0" WHERE id_user='2'
+
+редактирование профиля
+
+UPDATE customers SET name='editName', secondName='editSecName', phone='editPhone' WHERE id_user='2'
+
+покупка товара
+
+INSERT INTO cart (id_user,id_book, count) VALUES ('2','1','5')
+
+показ корзины 
+
+SELECT 
+cart.id_book,
+books.title, 
+authors.name, 
+cart.count ,
+discount.amount,
+books.price
+FROM cart
+LEFT JOIN booksAuthor ON cart.id_book=booksAuthor.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author
+LEFT JOIN books ON cart.id_book=books.id_book 
+LEFT JOIN discount ON books.id_discount=discount.id_discount 
+WHERE cart.id_user='3'
+
+Удаление из корзины
+
+DELETE FROM cart
+WHERE id_cart='1';
+
+Оформление покупки
+
+INSERT INTO orders (id_user, id_status, id_payment,data) VALUES ('3','1','1',NOW())
+INSERT INTO order_full_info(id_order,id_book,quantity,discount) VALUES ('1','2','30','30')
+
+Получение всех покупок
+
+SELECT 
+orders.id_order,
+orders.id_user,
+customers.name,
+customers.secondName,
+customers.phone,
+customers.email,
+order_full_info.id_book,
+books.title,
+authors.name as author,
+order_full_info.quantity,
+books.price,
+order_full_info.discount,
+payment.name as payment_method,
+status.name as status
+FROM orders
+LEFT JOIN order_full_info ON orders.id_order=order_full_info.id_order
+LEFT JOIN customers ON orders.id_user=customers.id_user
+LEFT JOIN books ON order_full_info.id_book=books.id_book
+LEFT JOIN booksAuthor ON order_full_info.id_book=booksAuthor.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author
+LEFT JOIN payment ON orders.id_payment=payment.id_payment
+LEFT JOIN status ON orders.id_status=status.id_status
+
+получение ордеров для юзера 
+
+SELECT 
+orders.id_order,
+orders.id_user,
+customers.name,
+customers.secondName,
+customers.phone,
+customers.email,
+order_full_info.id_book,
+books.title,
+authors.name as author,
+order_full_info.quantity,
+books.price,
+order_full_info.discount,
+payment.name as payment_method,
+status.name as status
+FROM orders
+LEFT JOIN order_full_info ON orders.id_order=order_full_info.id_order
+LEFT JOIN customers ON orders.id_user=customers.id_user
+LEFT JOIN books ON order_full_info.id_book=books.id_book
+LEFT JOIN booksAuthor ON order_full_info.id_book=booksAuthor.id_book  
+LEFT JOIN authors ON authors.id_author=booksAuthor.id_author
+LEFT JOIN payment ON orders.id_payment=payment.id_payment
+LEFT JOIN status ON orders.id_status=status.id_status
+WHERE orders.id_user='1'
+
+
+Получить всех авторов
+
+SELECT id_author, name FROM authors
+
+Получить всех жанры
+
+SELECT id_genre, name FROM genres
+
+Получить всех скидки
+SELECT id_discount, amount FROM discount
+
+Получить всех payment
+SELECT id_payment, name FROM payment
+
+Получить всех status
+SELECT id_status, name FROM status
+
+Получить всех roles
+SELECT id_role, name FROM roles
+
+Получить всех юзеров 
+
+SELECT
+customers.id_user,
+customers.name,
+customers.secondName,
+customers.phone,
+customers.email,
+discount.amount as discount,
+users.status,
+roles.name as role
+FROM customers
+LEFT JOIN discount ON customers.id_discount=discount.id_discount
+LEFT JOIN users ON customers.id_user=users.id_user
+LEFT JOIN roles ON users.id_role=roles.id_role

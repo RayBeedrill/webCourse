@@ -1,0 +1,28 @@
+﻿
+
+
+Ребята, Доброго дня!
+
+Рефакторинг: http://refactoring.guru/
+Презентация по архитектуре приложений: iOS IOC Presentation.ppt
+
+Code Review: 
+Hostopia Code Review Procedures v1.3.doc
+Coding Standards v2.ppt
+BT shellinstallsite.odt (пример)
+Подготовка к Root тесту: 
+RootTestforProgrammers.odt
+tablePermission.zip
+Повторюсь, крайне желательно, что бы Сергей Минаев/Евгений Запорожец не знали об этом:)
+
+P.S. Общие рекомендации:
+Т.к. прийдеться работать в команде, обратите внимание на документ SVN_vs_GIT.doc.
+В нем расписано как работать в команде над одним файлом и как комитить только Свои изменения 
+(в той команде, в которой Вы будете работать, возможны изменения этой цикличности).
+
+Будьте аккуратны, при работе с базой в консоли, всегда применяйте лимиты (сколько нужно изменить строк), особенно при update & delete.
+А также, перед update / delete - сделайте select с подготовленными параметрами, что бы убедиться, что у вас составленные условия - правильны. 
+
+Документация разных языков на одном сайте: http://overapi.com/
+JS Unit Test: js_unit_testing.pptx
+JS Style Code (составил Виктор Украинец): https://docs.google.com/document/d/1a_MTxttW7O8xYdHkCS0eAEox5D0V6gFmLbaAyWptsb8

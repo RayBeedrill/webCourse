@@ -1,0 +1,56 @@
+.product-exp img {
+    width: 100%;
+    height: 125px;
+}
+
+.navbar{
+	border-radius: 0;
+}
+
+.product-exp p{
+	display: inline;
+}
+
+.product-exp{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.filter select{
+	margin-bottom: 10px;
+}
+
+.msg-main{
+	
+	text-align: center;
+}
+
+.product-single{
+	text-align: center;
+}
+.btn-primary{
+	    margin: 0px auto;
+    display: block;
+    width: 150px;
+}
+
+.radio-buy{
+	margin: 10px 0;
+}
+
+.radio-buy input{
+	vertical-align: text-bottom;
+}
+
+.radio-buy label{
+	margin-left:10px;
+}
+
+.form-input{
+	margin-bottom: 5px;
+}
+
+.link-succ{
+color: #3c763d;
+background-color: #dff0d8;
+}

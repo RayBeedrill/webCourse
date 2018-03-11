@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /~user4/booker/server
+#RewriteBase /server/
+RewriteCond %{REQUEST_FILENAME} !^favicon\.ico
+RewriteRule .* index.php [L]
+DirectoryIndex index.php
